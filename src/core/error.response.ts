@@ -18,4 +18,63 @@ class NotFoundError extends ErrorResponse {
   }
 }
 
-export { ErrorResponse, NotFoundError }
+class AuthFailureError extends ErrorResponse {
+  constructor(
+    message = ReasonPhrases.UNAUTHORIZED,
+    errors = [],
+    status = StatusCodes.UNAUTHORIZED,
+    isOperational = true
+  ) {
+    super(message, status, errors, isOperational)
+  }
+}
+
+class ForbiddenError extends ErrorResponse {
+  constructor(message = ReasonPhrases.FORBIDDEN, errors = [], status = StatusCodes.FORBIDDEN, isOperational = true) {
+    super(message, status, errors, isOperational)
+  }
+}
+
+class BadeRequestError extends ErrorResponse {
+  constructor(
+    message = ReasonPhrases.BAD_REQUEST,
+    errors = [],
+    status = StatusCodes.BAD_REQUEST,
+    isOperational = true
+  ) {
+    super(message, status, errors, isOperational)
+  }
+}
+
+class InternalServerError extends ErrorResponse {
+  constructor(
+    message = ReasonPhrases.INTERNAL_SERVER_ERROR,
+    errors = [],
+    status = StatusCodes.INTERNAL_SERVER_ERROR,
+    isOperational = true
+  ) {
+    super(message, status, errors, isOperational)
+  }
+}
+
+// 401 error
+class UnauthorizedError extends ErrorResponse {
+  constructor(
+    message = ReasonPhrases.UNAUTHORIZED,
+    errors = [],
+    status = StatusCodes.UNAUTHORIZED,
+    isOperational = true
+  ) {
+    super(message, status, errors, isOperational)
+  }
+}
+
+export {
+  ErrorResponse,
+  NotFoundError,
+  AuthFailureError,
+  ForbiddenError,
+  InternalServerError,
+  UnauthorizedError,
+  BadeRequestError
+}
