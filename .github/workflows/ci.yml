@@ -18,4 +18,4 @@ jobs:
       - name: Build the Docker image
         run: docker build -t be-ecommerce .
       - name: Push to dockerhub
-        run: docker push jcool1032/be-ecommerce:lastest
+        run: docker push jcool1032/be-ecommerce:latest
