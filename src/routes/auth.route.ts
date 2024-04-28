@@ -29,29 +29,6 @@ const router: Router = Router()
  */
 router.post('/login', AccessController.login)
 
-/**
- * @swagger
- *   /api/v1/auth/signup:
- *     post:
- *       summary: Shop signup
- *       tags: [Auth]
- *       security: [{apiKey: []}]
- *       requestBody:
- *          description: Request signup info
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: '#/components/schemas/RequestRegister'
- *       responses:
- *         "400":
- *           $ref: '#/components/responses/400'
- *         "401":
- *           $ref: '#/components/responses/401'
- *         "200":
- *           description: Login successfully
- *           contents:
- *             application/json
- */
 router.post('/signup', AccessController.signup)
 
 router.use(authentication)

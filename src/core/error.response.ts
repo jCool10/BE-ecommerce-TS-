@@ -35,7 +35,7 @@ class ForbiddenError extends ErrorResponse {
   }
 }
 
-class BadeRequestError extends ErrorResponse {
+class BadRequestError extends ErrorResponse {
   constructor(
     message = ReasonPhrases.BAD_REQUEST,
     errors = [],
@@ -69,6 +69,17 @@ class UnauthorizedError extends ErrorResponse {
   }
 }
 
+class BadGateWayError extends ErrorResponse {
+  constructor(
+    message = ReasonPhrases.BAD_GATEWAY,
+    errors = [],
+    status = StatusCodes.BAD_GATEWAY,
+    isOperational = true
+  ) {
+    super(message, status, errors, isOperational)
+  }
+}
+
 export {
   ErrorResponse,
   NotFoundError,
@@ -76,5 +87,6 @@ export {
   ForbiddenError,
   InternalServerError,
   UnauthorizedError,
-  BadeRequestError
+  BadRequestError,
+  BadGateWayError
 }

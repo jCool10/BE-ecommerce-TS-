@@ -97,9 +97,6 @@ class accessService {
       }
     })
 
-    console.log('publicKey', publicKey)
-    console.log('privateKey', privateKey)
-
     const publicKeyString = await KeyStoreService.createKeyToken({
       userId: newShop._id,
       publicKey: publicKey.toString(),
@@ -108,15 +105,9 @@ class accessService {
 
     if (!publicKeyString) throw new InternalServerError('Failed to create public key')
 
-    console.log('publicKeyString', publicKeyString)
-
     const publicKeyObject = await crypto.createPublicKey(publicKeyString)
 
-    console.log('publicKeyObject', publicKeyObject)
-
     const tokens = await createTokenPair({ userId: newShop._id, email }, publicKeyObject, privateKey)
-
-    console.log(tokens)
 
     const newKey = await ApiKeyModel.create({
       key: crypto.randomBytes(64).toString('hex'),
@@ -149,7 +140,7 @@ class accessService {
 
     if (keyStore.refreshTokensUsed.includes(refreshToken)) {
       await KeyStoreModel.findByIdAndDelete({ userId })
-      throw new ForbiddenError('Something wrong happend!! Pls relogin')
+      throw new ForbiddenError('Something wrong happen!! Pls re-login')
     }
 
     if (refreshToken !== keyStore.refreshToken) throw new UnauthorizedError('Shop is not registered')
