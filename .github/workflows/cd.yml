@@ -1,0 +1,19 @@
+name: CD Build
+
+on:
+  workflow_run:
+    workflow: ['CI Build']
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull jcool1032/be-ecommerce:latest
+      - name: Delete old docker container
+        run: sudo docker rm -f be-ecommerce || true
+      - name: Run the Docker container
+        run: sudo docker run -d --name be-ecommerce -p 3000:3000 jcool1032/be-ecommerce:latest
