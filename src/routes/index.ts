@@ -22,7 +22,7 @@ router.use('/checkout', OrderRouter)
 router.use('/inventory', InventoryRouter)
 router.use('/comment', CommentRouter)
 router.get('/', (req, res) => {
-  res.send('Hello world')
+  res.send('Hello world!')
 })
 
 export default router
